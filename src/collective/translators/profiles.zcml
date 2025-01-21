@@ -1,0 +1,32 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.translators"
+    >
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Plone Translator: Install"
+      description="Package to configure a new Deepl Translator site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/default"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Plone Translator: Uninstall"
+      description="Uninstall Deepl Translator setup."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
+      />
+
+  <!-- Hide Uninstall Profile-->
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="collective.translators"
+      />
+
+
+  <include package=".upgrades" />
+
+</configure>

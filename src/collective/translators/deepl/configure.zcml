@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.translators"
+    >
+
+  <utility
+      provides="plone.app.multilingual.interfaces.IExternalTranslationService"
+      name="deepl_translate"
+      component=".utility.DeeplTranslator"
+      />
+
+</configure>
