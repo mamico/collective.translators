@@ -5,8 +5,6 @@ class LibreTranslateTranslatorFactory:
     order = 30
 
     # TODO: manage settings in the registry
-    # Free API -> https://api-free.deepl.com
-    # Pro API -> https://api.deepl.com
 
     server_url = "http://localhost:5000"
     api_key = ""
