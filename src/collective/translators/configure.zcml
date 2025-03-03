@@ -29,5 +29,6 @@
       zcml:condition="installed deepl"
       />
   <include package=".libretranslate" />
+  <include package=".amazon"/>
 
 </configure>
