@@ -1,7 +1,6 @@
 import deepl   
-from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
 from collective.translators.interfaces import IDeeplControlPanel
+from plone import api
 
 
 class DeeplTranslatorFactory:
@@ -16,9 +15,7 @@ class DeeplTranslatorFactory:
 
     @property
     def translator(self):
-        registry = getUtility(IRegistry)
-        settings = registry.forInterface(IDeeplControlPanel, prefix="deepl")
-        api_key = settings.api_key
+        api_key = api.portal.get_registry_record("collective.translators.interfaces.IDeeplControlPanel.api_key")
         return deepl.Translator(server_url=self.server_url, auth_key=api_key)
 
     def is_available(self):

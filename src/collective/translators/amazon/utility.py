@@ -1,6 +1,5 @@
 import boto3
-from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
+from plone import api
 from collective.translators.interfaces import IAmazonTranslateControlPanel
 
 class AmazonTranslatorFactory:
@@ -9,11 +8,9 @@ class AmazonTranslatorFactory:
 
     @property
     def translator(self):
-        registry = getUtility(IRegistry)
-        settings = registry.forInterface(IAmazonTranslateControlPanel, prefix="amazon_translate")
-        access_key = settings.access_key
-        secret_key = settings.secret_key
-        region_name = settings.region_name
+        access_key = api.portal.get_registry_record("collective.translators.interfaces.IAmazonTranslateControlPanel.access_key")
+        secret_key = api.portal.get_registry_record("collective.translators.interfaces.IAmazonTranslateControlPanel.secret_key")
+        region_name = api.portal.get_registry_record("collective.translators.interfaces.IAmazonTranslateControlPanel.region_name")
         return boto3.client("translate", region_name=region_name, 
                             aws_access_key_id=access_key, 
                             aws_secret_access_key=secret_key)
