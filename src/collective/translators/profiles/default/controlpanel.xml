@@ -2,5 +2,33 @@
 <object name="portal_controlpanel">
 
   <!-- -*- extra stuff goes here -*- -->
+  <configlet action_id="deepl-translator-controlpanel"
+             appId="deepl-translator-controlpanel"
+             category="Products"
+             title="Deepl Settings"
+             visible="True"
+             url_expr="string:${portal_url}/@@deepl-translator-controlpanel"
+  >
+    <permission>Manage portal</permission>
+  </configlet>
 
+  <configlet action_id="amazon-translator-controlpanel"
+             appId="amazon-translator-controlpanel"
+             category="Products"
+             title="Amazon Translate Settings"
+             visible="True"
+             url_expr="string:${portal_url}/@@amazon-translator-controlpanel"
+  >
+    <permission>Manage portal</permission>
+  </configlet>
+
+  <configlet action_id="libretranslate-translator-controlpanel"
+             appId="libretranslate-translator-controlpanel"
+             category="Products"
+             title="LibreTranslate Settings"
+             visible="True"
+             url_expr="string:${portal_url}/@@libretranslate-translator-controlpanel"
+  >
+    <permission>Manage portal</permission>
+  </configlet>
 </object>
