@@ -6,7 +6,7 @@
   <!-- Deepl Control Panel -->
   <records interface="collective.translators.interfaces.IDeeplControlPanel"
            >
-    <value key="enabled">True</value>
+    <value key="enabled">False</value>
     <value key="order">30</value>
     <value key="source_languages"></value>
     <value key="target_languages"></value>
@@ -16,7 +16,7 @@
   <!-- Amazon Translate Control Panel -->
   <records interface="collective.translators.interfaces.IAmazonTranslateControlPanel"
            >
-    <value key="enabled">True</value>
+    <value key="enabled">False</value>
     <value key="order">30</value>
     <value key="source_languages"></value>
     <value key="target_languages"></value>
@@ -28,7 +28,7 @@
   <!-- LibreTranslate Control Panel -->
   <records interface="collective.translators.interfaces.ILibreTranslateControlPanel"
            >
-    <value key="enabled">True</value>
+    <value key="enabled">False</value>
     <value key="order">30</value>
     <value key="source_languages"></value>
     <value key="target_languages"></value>

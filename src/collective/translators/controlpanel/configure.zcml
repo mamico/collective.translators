@@ -9,7 +9,15 @@
       name="deepl-translator-controlpanel"
       for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.DeeplControlPanel"
-      permission="plone.app.controlpanel.Language"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBrowserLayer"
+      />
+      
+<browser:page
+      name="amazon-translator-controlpanel"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".controlpanel.AmazonTranslateControlPanel"
+      permission="cmf.ManagePortal"
       layer="..interfaces.IBrowserLayer"
       />
       
@@ -26,6 +34,27 @@
       for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.LibreTranslateControlPanel"
       permission="plone.app.controlpanel.Language"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+<adapter
+    factory=".controlpanel.DeeplRegistryConfigletPanel"
+    name="deepl-controlpanel" />
+
+<adapter
+    factory=".controlpanel.AmazonTranslateRegistryConfigletPanel"
+    name="amazon-translate-controlpanel" />
+
+<adapter
+    factory=".controlpanel.LibreTranslateRegistryConfigletPanel"
+    name="libre-translate-controlpanel" />
+
+
+<browser:page
+      name="libretranslate-translator-controlpanel"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".controlpanel.LibreTranslateControlPanel"
+      permission="cmf.ManagePortal"
       layer="..interfaces.IBrowserLayer"
       />
 
