@@ -50,6 +50,46 @@ class IDeeplControlPanel(Interface):
         required=False,
     )
 
+class IDeepSeekControlPanel(Interface):
+    enabled = schema.Bool(
+        title=_("Enabled"),
+        description=_("Translation service enabled"),
+            default=True,
+    )
+
+    order = schema.Int(
+        title=_("Order"),
+        description=_("Ordering service translation"),
+        default=30,
+        required=True,
+    )
+
+    source_languages = schema.List(
+        title=_("Source languages"),
+        required=False,
+        default=[],
+        missing_value=[],
+        value_type=schema.Choice(
+            vocabulary="plone.app.vocabularies.AvailableContentLanguages"
+        ),
+    )
+
+    target_languages = schema.List(
+        title=_("Target languages"),
+        required=False,
+        default=[],
+        missing_value=[],
+        value_type=schema.Choice(
+            vocabulary="plone.app.vocabularies.AvailableContentLanguages"
+        ),
+    )
+
+    api_key = schema.TextLine(
+        title=_("API Key"),
+        description=_("The API key for the DeepSeek service."),
+        required=False,
+    )
+
 
 class IAmazonTranslateControlPanel(Interface):
     enabled = schema.Bool(

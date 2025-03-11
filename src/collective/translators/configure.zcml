@@ -30,5 +30,6 @@
       />
   <include package=".libretranslate" />
   <include package=".amazon"/>
+  <include package=".deepseek"/>
 
 </configure>

@@ -1,0 +1,68 @@
+msgid "Enabled"
+msgstr "Abilitato"
+
+msgid "Deepl Translation Service"
+msgstr "Servizio di traduzione Deepl"
+
+msgid "DeepSeek Translation Service"
+msgstr "Servizio di traduzione DeepSeek"
+
+msgid "Amazon Translate Service"
+msgstr "Servizio di traduzione Amazon"
+
+msgid "Libre Translate Service"
+msgstr "Servizio di traduzione Libre"
+
+msgid "Deepl Settings"
+msgstr "Impostazioni Deepl"
+
+msgid "DeepSeek Settings"
+msgstr "Impostazioni DeepSeek"
+
+msgid "Amazon Translate Settings"
+msgstr "Impostazioni Amazon Translate"
+
+msgid "Libre Translate Settings"
+msgstr "Impostazioni Libre Translate"
+
+msgid "Translation service enabled"
+msgstr "Servizio di traduzione abilitato"
+
+msgid "Order"
+msgstr "Ordine"
+
+msgid "Ordering service translation"
+msgstr "Ordinamento del servizio di traduzione"
+
+msgid "Source languages"
+msgstr "Lingue di origine"
+
+msgid "Target languages"
+msgstr "Lingue di destinazione"
+
+msgid "API Key"
+msgstr "Chiave API"
+
+msgid "The API key for the Deepl translation service."
+msgstr "La chiave API per il servizio di traduzione Deepl."
+
+msgid "Access key"
+msgstr "Chiave di accesso"
+
+msgid "The key for the access to Amazon Translate service."
+msgstr "La chiave per l'accesso al servizio Amazon Translate."
+
+msgid "Secret key"
+msgstr "Chiave segreta"
+
+msgid "The secret key for the access to Amazon Translate service."
+msgstr "La chiave segreta per l'accesso al servizio Amazon Translate."
+
+msgid "Region"
+msgstr "Regione"
+
+msgid "The region for the Amazon Translate service."
+msgstr "La regione per il servizio Amazon Translate."
+
+msgid "The API key for the Libre translate translation service."
+msgstr "La chiave API per il servizio di traduzione Libre."

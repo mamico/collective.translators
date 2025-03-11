@@ -35,4 +35,14 @@
     <value key="api_key">YOUR_LIBRETRANSLATE_API_KEY</value>
   </records>
 
+  <!-- DeepSeek Control Panel -->
+  <records interface="collective.translators.interfaces.IDeepSeekControlPanel"
+           >
+    <value key="enabled">False</value>
+    <value key="order">30</value>
+    <value key="source_languages"></value>
+    <value key="target_languages"></value>
+    <value key="api_key">YOUR_DEEPSEEK_API_KEY</value>
+  </records>
+
 </registry>
