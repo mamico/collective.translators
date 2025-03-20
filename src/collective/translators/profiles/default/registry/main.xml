@@ -4,44 +4,40 @@
 >
 
   <!-- Deepl Control Panel -->
-  <records interface="collective.translators.interfaces.IDeeplControlPanel"
-           >
+  <records interface="collective.translators.interfaces.IDeeplControlPanel">
     <value key="enabled">False</value>
     <value key="order">30</value>
-    <value key="source_languages"></value>
-    <value key="target_languages"></value>
+    <value key="source_languages" />
+    <value key="target_languages" />
     <value key="api_key">YOUR_DEEPL_API_KEY</value>
   </records>
 
-  <!-- Amazon Translate Control Panel -->
-  <records interface="collective.translators.interfaces.IAmazonTranslateControlPanel"
-           >
+  <!-- AWS Translate Control Panel -->
+  <records interface="collective.translators.interfaces.IAWSTranslateControlPanel">
     <value key="enabled">False</value>
     <value key="order">30</value>
-    <value key="source_languages"></value>
-    <value key="target_languages"></value>
+    <value key="source_languages" />
+    <value key="target_languages" />
     <value key="access_key">YOUR_AMAZON_ACCESS_API_KEY</value>
     <value key="secret_key">YOUR_AMAZON_SECRET_API_KEY</value>
     <value key="region_name">eu-west-3</value>
   </records>
 
   <!-- LibreTranslate Control Panel -->
-  <records interface="collective.translators.interfaces.ILibreTranslateControlPanel"
-           >
+  <records interface="collective.translators.interfaces.ILibreTranslateControlPanel">
     <value key="enabled">False</value>
     <value key="order">30</value>
-    <value key="source_languages"></value>
-    <value key="target_languages"></value>
+    <value key="source_languages" />
+    <value key="target_languages" />
     <value key="api_key">YOUR_LIBRETRANSLATE_API_KEY</value>
   </records>
 
   <!-- DeepSeek Control Panel -->
-  <records interface="collective.translators.interfaces.IDeepSeekControlPanel"
-           >
+  <records interface="collective.translators.interfaces.IDeepSeekControlPanel">
     <value key="enabled">False</value>
     <value key="order">30</value>
-    <value key="source_languages"></value>
-    <value key="target_languages"></value>
+    <value key="source_languages" />
+    <value key="target_languages" />
     <value key="api_key">YOUR_DEEPSEEK_API_KEY</value>
   </records>
 

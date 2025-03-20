@@ -12,15 +12,15 @@
       permission="cmf.ManagePortal"
       layer="..interfaces.IBrowserLayer"
       />
-      
+
   <browser:page
-      name="amazon-translator-controlpanel"
+      name="aws-translator-controlpanel"
       for="plone.base.interfaces.IPloneSiteRoot"
-      class=".controlpanel.AmazonTranslateControlPanel"
+      class=".controlpanel.AWSTranslateControlPanel"
       permission="cmf.ManagePortal"
       layer="..interfaces.IBrowserLayer"
       />
-      
+
   <browser:page
       name="libretranslate-translator-controlpanel"
       for="plone.base.interfaces.IPloneSiteRoot"
@@ -29,7 +29,7 @@
       layer="..interfaces.IBrowserLayer"
       />
 
-    <browser:page
+  <browser:page
       name="deepseek-translator-controlpanel"
       for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.DeepSeekControlPanel"
@@ -39,18 +39,22 @@
 
   <adapter
       factory=".controlpanel.DeeplRegistryConfigletPanel"
-      name="deepl-controlpanel" />
+      name="deepl-controlpanel"
+      />
 
   <adapter
-      factory=".controlpanel.AmazonTranslateRegistryConfigletPanel"
-      name="amazon-translate-controlpanel" />
+      factory=".controlpanel.AWSTranslateRegistryConfigletPanel"
+      name="aws-translate-controlpanel"
+      />
 
   <adapter
       factory=".controlpanel.LibreTranslateRegistryConfigletPanel"
-      name="libre-translate-controlpanel" />
+      name="libre-translate-controlpanel"
+      />
 
   <adapter
-        factory=".controlpanel.DeepSeekRegistryConfigletPanel"
-        name="deepseek-controlpanel" />
+      factory=".controlpanel.DeepSeekRegistryConfigletPanel"
+      name="deepseek-controlpanel"
+      />
 
 </configure>

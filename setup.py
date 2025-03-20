@@ -70,6 +70,12 @@ setup(
         "deepl": [
             "deepl",
         ],
+        "aws": [
+            "boto3",
+        ],
+        "deepseek": [
+            "openai",
+        ],
         "libretranslate": [],
     },
     entry_points="""

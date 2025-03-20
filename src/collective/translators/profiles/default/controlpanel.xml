@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<object name="portal_controlpanel" i18n:domain="collective.translators" xmlns:i18n="http://xml.zope.org/namespaces/i18n">  
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        name="portal_controlpanel"
+        i18n:domain="collective.translators"
+>
 
   <!-- -*- extra stuff goes here -*- -->
   <configlet action_id="deepl-translator-controlpanel"
              appId="deepl-translator-controlpanel"
              category="Products"
              title="Deepl Settings"
-             i18n:attributes="title"
-             visible="True"
              url_expr="string:${portal_url}/@@deepl-translator-controlpanel"
+             visible="True"
+             i18n:attributes="title"
   >
     <permission>Manage portal</permission>
   </configlet>
 
-  <configlet action_id="amazon-translator-controlpanel"
-             appId="amazon-translator-controlpanel"
+  <configlet action_id="aws-translator-controlpanel"
+             appId="aws-translator-controlpanel"
              category="Products"
-             title="Amazon Translate Settings"
-             i18n:attributes="title"
+             title="AWS Translate Settings"
+             url_expr="string:${portal_url}/@@aws-translator-controlpanel"
              visible="True"
-             url_expr="string:${portal_url}/@@amazon-translator-controlpanel"
+             i18n:attributes="title"
   >
     <permission>Manage portal</permission>
   </configlet>
@@ -28,9 +31,9 @@
              appId="libretranslate-translator-controlpanel"
              category="Products"
              title="LibreTranslate Settings"
-             i18n:attributes="title"
-             visible="True"
              url_expr="string:${portal_url}/@@libretranslate-translator-controlpanel"
+             visible="True"
+             i18n:attributes="title"
   >
     <permission>Manage portal</permission>
   </configlet>
@@ -39,9 +42,9 @@
              appId="deepseek-translator-controlpanel"
              category="Products"
              title="DeepSeek Settings"
-             i18n:attributes="title"
-             visible="True"
              url_expr="string:${portal_url}/@@deepseek-translator-controlpanel"
+             visible="True"
+             i18n:attributes="title"
   >
     <permission>Manage portal</permission>
   </configlet>

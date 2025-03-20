@@ -1,9 +1,9 @@
-from collective.translators.interfaces import IDeeplControlPanel
-from collective.translators.interfaces import IAmazonTranslateControlPanel
-from collective.translators.interfaces import ILibreTranslateControlPanel
-from collective.translators.interfaces import IDeepSeekControlPanel
-from plone.app.registry.browser import controlpanel
 from collective.translators import _
+from collective.translators.interfaces import IAWSTranslateControlPanel
+from collective.translators.interfaces import IDeeplControlPanel
+from collective.translators.interfaces import IDeepSeekControlPanel
+from collective.translators.interfaces import ILibreTranslateControlPanel
+from plone.app.registry.browser import controlpanel
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from zope.component import adapter
 from zope.interface import Interface
@@ -19,20 +19,24 @@ class DeeplControlPanel(controlpanel.RegistryEditForm):
     label = _("Deepl Translation Service")
     schema = IDeeplControlPanel
 
-class AmazonTranslateControlPanel(controlpanel.RegistryEditForm):
-    id = "AmazonTranslateControlPanel"
-    label = _("Amazon Translate Service")
-    schema = IAmazonTranslateControlPanel
+
+class AWSTranslateControlPanel(controlpanel.RegistryEditForm):
+    id = "AWSTranslateControlPanel"
+    label = _("AWS Translate Service")
+    schema = IAWSTranslateControlPanel
+
 
 class LibreTranslateControlPanel(controlpanel.RegistryEditForm):
     id = "LibreTranslateControlPanel"
     label = _("Libre Translate Service")
     schema = ILibreTranslateControlPanel
 
+
 class DeepSeekControlPanel(controlpanel.RegistryEditForm):
     id = "DeepSeekControlPanel"
     label = _("DeepSeek Translation Service")
     schema = IDeepSeekControlPanel
+
 
 @adapter(Interface, Interface)
 class DeeplRegistryConfigletPanel(RegistryConfigletPanel):
@@ -45,16 +49,18 @@ class DeeplRegistryConfigletPanel(RegistryConfigletPanel):
     title = _("Deepl Settings")
     group = "Products"
 
-@adapter(Interface, Interface)
-class AmazonTranslateRegistryConfigletPanel(RegistryConfigletPanel):
-    """Amazon Translate control panel"""
 
-    schema = IAmazonTranslateControlPanel
-    schema_prefix = "amazon_translate"
-    configlet_id = "amazon-translate-controlpanel"
+@adapter(Interface, Interface)
+class AWSTranslateRegistryConfigletPanel(RegistryConfigletPanel):
+    """AWS Translate control panel"""
+
+    schema = IAWSTranslateControlPanel
+    schema_prefix = "aws_translate"
+    configlet_id = "aws-translate-controlpanel"
     configlet_category_id = "Products"
-    title = _("Amazon Translate Settings")
+    title = _("AWS Translate Settings")
     group = "Products"
+
 
 @adapter(Interface, Interface)
 class LibreTranslateRegistryConfigletPanel(RegistryConfigletPanel):
@@ -66,6 +72,7 @@ class LibreTranslateRegistryConfigletPanel(RegistryConfigletPanel):
     configlet_category_id = "Products"
     title = _("Libre Translate Settings")
     group = "Products"
+
 
 @adapter(Interface, Interface)
 class DeepSeekRegistryConfigletPanel(RegistryConfigletPanel):

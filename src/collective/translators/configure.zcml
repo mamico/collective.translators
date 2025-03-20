@@ -29,7 +29,13 @@
       zcml:condition="installed deepl"
       />
   <include package=".libretranslate" />
-  <include package=".amazon"/>
-  <include package=".deepseek"/>
+  <include
+      package=".aws"
+      zcml:condition="installed boto3"
+      />
+  <include
+      package=".deepseek"
+      zcml:condition="installed openai"
+      />
 
 </configure>

@@ -6,8 +6,8 @@
 
   <utility
       provides="plone.app.multilingual.interfaces.IExternalTranslationService"
-      name="amazon_translate"
-      component=".utility.AmazonTranslator"
+      name="aws_translate"
+      component=".utility.AWSTranslator"
       />
 
 </configure>
