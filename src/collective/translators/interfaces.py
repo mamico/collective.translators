@@ -10,7 +10,7 @@ class IBrowserLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
-class BaseControlPanel(Interface):
+class IBaseControlPanel(Interface):
     enabled = schema.Bool(
         title=_("Enabled"),
         description=_("Translation service enabled"),
@@ -45,7 +45,7 @@ class BaseControlPanel(Interface):
     )
 
 
-class IDeeplControlPanel(BaseControlPanel):
+class IDeeplControlPanel(IBaseControlPanel):
     api_key = schema.TextLine(
         title=_("API Key"),
         description=_("The API key for the Deepl translation service."),
@@ -53,7 +53,7 @@ class IDeeplControlPanel(BaseControlPanel):
     )
 
 
-class IDeepSeekControlPanel(BaseControlPanel):
+class IDeepSeekControlPanel(IBaseControlPanel):
     api_key = schema.TextLine(
         title=_("API Key"),
         description=_("The API key for the DeepSeek service."),
@@ -61,7 +61,7 @@ class IDeepSeekControlPanel(BaseControlPanel):
     )
 
 
-class IAWSTranslateControlPanel(BaseControlPanel):
+class IAWSTranslateControlPanel(IBaseControlPanel):
     access_key = schema.TextLine(
         title=_("Access key"),
         description=_("The key for the access to AWS Translate service."),
@@ -82,7 +82,7 @@ class IAWSTranslateControlPanel(BaseControlPanel):
     )
 
 
-class ILibreTranslateControlPanel(BaseControlPanel):
+class ILibreTranslateControlPanel(IBaseControlPanel):
     api_key = schema.TextLine(
         title=_("API Key"),
         description=_("The API key for the Libre translate translation service."),

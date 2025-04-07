@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.translators"
+    >
+
+  <utility
+      provides="plone.app.multilingual.interfaces.IExternalTranslationService"
+      name="ollama"
+      component=".utility.Ollama"
+      />
+
+  <browser:page
+      name="ollama-translator-controlpanel"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".controlpanel.ControlPanel"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+  <adapter
+      factory=".controlpanel.RegistryConfigletPanel"
+      name="ollama-controlpanel"
+      />
+
+</configure>

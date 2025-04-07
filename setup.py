@@ -56,6 +56,10 @@ setup(
         "plone.restapi",
         "plone.volto",
         "requests",
+        "ollama",
+        "deepl",
+        "boto3",
+        "openai",
     ],
     extras_require={
         "test": [
@@ -66,15 +70,6 @@ setup(
             "pytest",
             "pytest-cov",
             "pytest-plone>=0.5.0",
-        ],
-        "deepl": [
-            "deepl",
-        ],
-        "aws": [
-            "boto3",
-        ],
-        "deepseek": [
-            "openai",
         ],
         "libretranslate": [],
     },
