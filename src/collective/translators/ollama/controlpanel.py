@@ -1,14 +1,14 @@
 # from collective.translators import _
 # import zope.schema
 from collective.translators import _
-from collective.translators.interfaces import IBaseControlPanel
+from collective.translators.interfaces import IControlPanel
 from plone.app.registry.browser import controlpanel
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from zope.component import adapter
 from zope.interface import Interface
 
 
-class IControlPanel(IBaseControlPanel):
+class IControlPanel(IControlPanel):
     pass
     # api_key = zope.schema.TextLine(
     #     title=_("API Key"),

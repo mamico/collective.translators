@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.translators"
     >
@@ -12,7 +13,7 @@
 
 
 
-  <page
+  <browser:page
       name="libretranslate-translator-controlpanel"
       for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.LibreTranslateControlPanel"
