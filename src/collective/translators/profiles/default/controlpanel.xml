@@ -4,7 +4,6 @@
         i18n:domain="collective.translators"
 >
 
-  <!-- -*- extra stuff goes here -*- -->
   <configlet action_id="deepl-translator-controlpanel"
              appId="deepl-translator-controlpanel"
              category="Products"

@@ -9,5 +9,17 @@
       name="aws_translate"
       component=".utility.AWSTranslator"
       />
+  <page
+      name="aws-translator-controlpanel"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".controlpanel.AWSTranslateControlPanel"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+  <adapter
+      factory=".controlpanel.AWSTranslateRegistryConfigletPanel"
+      name="aws-translate-controlpanel"
+      />
 
 </configure>

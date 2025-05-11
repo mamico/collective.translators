@@ -10,4 +10,19 @@
       component=".utility.LibreTranslateTranslator"
       />
 
+
+
+  <page
+      name="libretranslate-translator-controlpanel"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".controlpanel.LibreTranslateControlPanel"
+      permission="plone.app.controlpanel.Language"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+  <adapter
+      factory=".controlpanel.LibreTranslateRegistryConfigletPanel"
+      name="libre-translate-controlpanel"
+      />
+
 </configure>

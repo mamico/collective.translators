@@ -10,4 +10,18 @@
       component=".utility.DeepSeek"
       />
 
+
+  <page
+      name="deepseek-translator-controlpanel"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".controlpanel.DeepSeekControlPanel"
+      permission="plone.app.controlpanel.Language"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+  <adapter
+      factory=".controlpanel.DeepSeekRegistryConfigletPanel"
+      name="deepseek-controlpanel"
+      />
+
 </configure>

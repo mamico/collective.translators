@@ -1,52 +1,75 @@
 # collective.translators
 
-Deepl
+This package extends [plone.app.multilingual](https://github.com/plone/plone.app.multilingual) by providing pluggable external translation utilities for automatic content translation in Plone. It enables seamless integration with multiple translation providers, allowing site administrators to configure and use services such as DeepL, AWS Translate, LibreTranslate, DeepSeek, and Ollama for translating site content.
 
-## Features
 
-TODO: List our awesome features
+## Translator Utilities
 
-## Installation
+This package provides pluggable translation utilities for multiple providers. Each utility exposes a similar interface for translating content and checking available languages.
 
-Install collective.translators with `pip`:
+Each utility is registered as a factory and can be enabled/configured via the Plone control panel. They provide a consistent API for translation tasks, making it easy to switch between providers.
 
-```shell
-pip install collective.translators
-```
+### 1. DeepL Translator (`DeeplTranslatorFactory`)
+Integrates with the DeepL API (Free and Pro endpoints supported). Reads the API key from the Plone registry. Supports autodetection of source language and translation of text or HTML.
 
-And to create the Plone site:
+### 2. AWS Translate (`AWSTranslatorFactory`)
+Uses Amazon AWS Translate. Reads credentials and region from the Plone registry. Handles translation and language autodetection fallback.
 
-```shell
-make create_site
-```
+### 3. LibreTranslate (`LibreTranslateTranslatorFactory`)
+Integrates with the open-source LibreTranslate server. The server URL and API key can be configured. Supports autodetection and both text and HTML formats.
 
-## Add features using `plonecli` or `bobtemplates.plone`
+### 4. DeepSeek Translator (`DeepSeekFactory`)
+Integrates with DeepSeek, an LLM-based translation API. Reads the API key from the registry. Uses chat completions for translation.
 
-This package provides markers as strings (`<!-- extra stuff goes here -->`) that are compatible with [`plonecli`](https://github.com/plone/plonecli) and [`bobtemplates.plone`](https://github.com/plone/bobtemplates.plone).
-These markers act as hooks to add all kinds of subtemplates, including behaviors, control panels, upgrade steps, or other subtemplates from `plonecli`.
+### 5. Ollama Translator (`OllamaTranslatorFactory`)
+Integrates with the Ollama local LLM server. Allows translation using models running on your own hardware. The Ollama server URL and model can be configured. Useful for private or offline translation tasks.
 
-To run `plonecli` with configuration to target this package, run the following command.
 
-```shell
-make add <template_name>
-```
+---
 
-For example, you can add a content type to your package with the following command.
+## Adding a New Tool
 
-```shell
-make add content_type
-```
+You can contribute a new translation tool (utility) by either:
+- Proposing it via a pull request (PR) within this package, following the structure below, or
+- Creating a separate Plone add-on package that provides an external translation utility implementing the same interface and registration pattern.
 
-You can add a behavior with the following command.
+To add a new translation tool (utility) follow these steps:
 
-```shell
-make add behavior
-```
+1. **Implement and Register Your Utility**
+   - Your utility class must implement the `IExternalTranslationService` interface from `plone.app.multilingual.interfaces`.
+   - It should provide at least these methods:
+     - `is_available()`: Returns True if the service is enabled and ready.
+     - `available_languages()`: Returns a list of supported language codes or pairs.
+     - `translate_content(content, source_language, target_language, ...)`: Performs the translation and returns the translated text.
+   - Register your utility in its `configure.zcml` using:
+     ```xml
+     <utility
+         provides="plone.app.multilingual.interfaces.IExternalTranslationService"
+         name="your_tool_name"
+         component=".utility.YourTranslator"
+     />
+     ```
+   - Follow the structure and API of the existing utilities (see `utility.py` and `configure.zcml` in other tool folders) to ensure compatibility.
 
-```{seealso}
-You can check the list of available subtemplates in the [`bobtemplates.plone` `README.md` file](https://github.com/plone/bobtemplates.plone/?tab=readme-ov-file#provided-subtemplates).
-See also the documentation of [Mockup and Patternslib](https://6.docs.plone.org/classic-ui/mockup.html) for how to build the UI toolkit for Classic UI.
-```
+2. **Register Your Tool**
+   - In `src/collective/translators/configure.zcml`, add:
+     ```xml
+     <include package=".mytool" />
+     ```
+
+3. **(Optional) Create a Control Panel**
+   - If you want user-configurable settings for your tool, add:
+     - A registry interface in `interfaces.py`.
+     - Registry configuration defaults in `profiles/default/registry/youtool.xml`
+     - Add ontrolpanel registration  in `profiles/default/controlpanel.xml`
+     - A control panel form and adapter in `controlpanel/controlpanel.py`, and register it in the relevant ZCML and `controlpanel/configure.zcml`.
+   - See the existing tools for concrete examples of each file and configuration.
+
+6. **Test Your Tool**
+   - Restart your site, access your tool's control panel, add your API key or settings, and test translation.
+
+Refer to the code of existing tools (e.g. DeepL, AWS, LibreTranslate, DeepSeek, Ollama) for examples of each file and configuration.
+
 
 ## Contribute
 
@@ -56,48 +79,3 @@ See also the documentation of [Mockup and Patternslib](https://6.docs.plone.org/
 ## License
 
 The project is licensed under GPLv2.
-
-## Credits and Acknowledgements 🙏
-
-Crafted with care by **Generated using [Cookieplone (0.8.1)](https://github.com/plone/cookieplone) and [cookiecutter-plone (f3a6293)](https://github.com/plone/cookiecutter-plone/commit/f3a6293bd1d64bcb7ff67e4ae53fc4ee5223e7c1) on 2024-11-30 11:19:21.252928**. A special thanks to all contributors and supporters!
-
-## Adding a New Tool
-
-If you would like to add a new translation tool, follow these steps:
-
-1. Create a New Directory for the Translation Tool
-    Create a new directory for the translation tool inside the 'src' folder of your Plone add-on:  
-     [collective.translators/src/collective/translators/{YOUR_TOOL}].
-     Inside the new directory, add the following files:
-     - __init__.py
-     - utility.py
-     - configure.zcml
-     The __init__.py file should be empty. For the other files, follow the structure of the already implemented tools with the same filenames.
-     Notice that the 'available_languages' method in the 'utility.py' file can return an empty array. In this case, it will be assumed that the tool can translate between any languages.
-
-2. Update the Add-on Configuration
-    Register the new tool in your add-on's main 'configure.zcml' file:  
-    [collective.translators/src/collective/translators/configure.zcml].
-    Modify ut by adding the following line:  
-    '<include package=".{YOUR_TOOL}" />'
-
-3. Create the Registry for Your New Tool
-    Open the 'interfaces.py' file:  
-    [collective.translators/src/collective/translators/interfaces.py].
-    Add your new interface, following the structure of the others already implemented there.
-    Now open the 'main.xml' file:  
-    [collective.translators/src/collective/translators/profiles/default/registry/main.xml].
-    Add the configuration for your tool, following the structure of the others. It should look like this:
-   <records interface="collective.translators.interfaces.IYourToolControlPanel">
-       <value key="enabled">False</value>
-       <value key="order">30</value>
-       <value key="source_languages"></value>
-       <value key="target_languages"></value>
-       <value key="api_key">YOUR_TOOL_API_KEY</value>
-   </records>
-
-4. Create your personalized control panel 
-    Inside the controlpanel folder [collective.translators/src/collective/translators/controlpanel] open 'controlpanel.py' and add the configuration of your tool's controlpanel and the adapter. Then, register the adapter and the view in the configure.zcml file within the same folder. Now open the 'controlpanel.xml': [collective.translators/src/collective/translators/profiles/default/controlpanel.xml]. Add the configlet.
-
-5. Test your new tool
-   Now, all should be set. Access to your new control panel in your Plone site, add your API key and test your new tool.

@@ -10,4 +10,17 @@
       component=".utility.DeeplTranslator"
       />
 
+  <page
+      name="deepl-translator-controlpanel"
+      for="plone.base.interfaces.IPloneSiteRoot"
+      class=".controlpanel.DeeplControlPanel"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+  <adapter
+      factory=".controlpanel.DeeplRegistryConfigletPanel"
+      name="deepl-controlpanel"
+      />
+
 </configure>

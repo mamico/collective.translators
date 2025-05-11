@@ -1,5 +1,5 @@
 # from collective.translators import _
-# from zope import schema
+# import zope.schema
 from collective.translators import _
 from collective.translators.interfaces import IBaseControlPanel
 from plone.app.registry.browser import controlpanel
@@ -10,7 +10,7 @@ from zope.interface import Interface
 
 class IControlPanel(IBaseControlPanel):
     pass
-    # api_key = schema.TextLine(
+    # api_key = zope.schema.TextLine(
     #     title=_("API Key"),
     #     description=_("The API key for the DeepSeek service."),
     #     required=False,
